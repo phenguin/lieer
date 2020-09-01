@@ -26,7 +26,7 @@ from oauth2client.file import Storage
 from pathlib import Path
 
 class Remote:
-  SCOPES = 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.modify'
+  SCOPES = 'https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.modify https://mail.google.com/'
   APPLICATION_NAME   = 'Lieer'
   CLIENT_SECRET_FILE = None
   authorized         = False
@@ -42,12 +42,12 @@ class Remote:
   # * https://stackoverflow.com/questions/19615372/client-secret-in-oauth-2-0?rq=1
   #
   OAUTH2_CLIENT_SECRET = {
-        "client_id":"753933720722-ju82fu305lii0v9rdo6mf9hj40l5juv0.apps.googleusercontent.com",
-        "project_id":"capable-pixel-160614",
+        "client_id":"$LIEER_CLIENT_ID",
+        "project_id":"$LIEER_PROJECT_ID",
         "auth_uri":"https://accounts.google.com/o/oauth2/auth",
         "token_uri":"https://accounts.google.com/o/oauth2/token",
         "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret":"8oudEG0Tvb7YI2V0ykp2Pzz9",
+        "client_secret":"$LIEER_CLIENT_SECRET",
         "redirect_uris":["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
     }
 
@@ -725,4 +725,3 @@ class Remote:
     msg = self.service.users().messages().send(userId = self.account, body = message).execute()
 
     return msg
-
